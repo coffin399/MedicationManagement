@@ -1,0 +1,16 @@
+# config.yaml
+
+# Discord BOTのトークンをここに貼り付けてください
+token: "YOUR_DISCORD_BOT_TOKEN"
+
+# 通知を送信するチャンネルのID
+channel_id: 123456789
+
+# メンションするユーザーのID
+user_id: 123456789
+
+# 送信するメッセージ
+message: "お薬を飲む時間ですよ！"
+
+# BOTのステータスメッセージ
+status_message: "服薬管理中..."
