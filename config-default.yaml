@@ -1,12 +1,15 @@
-# config.yaml
+# config-default.yaml
 
 # Discord BOTのトークンをここに貼り付けてください
+# Discord Developer Portal (https://discord.com/developers/applications) で取得できます
 token: "YOUR_DISCORD_BOT_TOKEN"
 
 # 通知を送信するチャンネルのID
+# チャンネルを右クリックして「IDをコピー」で取得できます
 channel_id: 123456789
 
 # メンションするユーザーのID
+# ユーザーを右クリックして「IDをコピー」で取得できます
 user_id: 123456789
 
 # 送信するメッセージ
@@ -14,3 +17,17 @@ message: "お薬を飲む時間ですよ！"
 
 # BOTのステータスメッセージ
 status_message: "服薬管理中..."
+
+# 通知を送信する時間 (JST) を "HH:MM" 形式で指定します
+# 例:
+# notify_times:
+#   - "09:00"
+#   - "12:00"
+#   - "14:00"
+#   - "21:30"
+notify_times:
+  - "09:00"
+  - "12:00"
+  - "14:00"
+  - "16:00"
+  - "18:00"
