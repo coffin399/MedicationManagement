@@ -133,19 +133,17 @@ async def reminder():
 async def notice(interaction: discord.Interaction):
     """通知メッセージをテスト表示するコマンド"""
     try:
-        user = await bot.fetch_user(USER_ID)
-        if user:
-            await interaction.response.defer()
-            gemini_sermon = await generate_gemini_message()
+        await interaction.response.defer()
+        gemini_sermon = await generate_gemini_message()
 
-            gif_to_send = ""
-            if GIF_URLS:
-                gif_to_send = random.choice(GIF_URLS)
+        gif_to_send = ""
+        if GIF_URLS:
+            gif_to_send = random.choice(GIF_URLS)
 
-            full_message = f"【テスト通知】\n{user.mention} {MESSAGE}\n\n{gemini_sermon}\n\n{gif_to_send}"
-            await interaction.followup.send(full_message.strip())
-        else:
-            await interaction.response.send_message(f"エラー: ユーザーID `{USER_ID}` が見つかりません。", ephemeral=True)
+        # interaction.user.mention を使用して、コマンドを実行したユーザーにメンションします。
+        full_message = f"【テスト通知】\n{interaction.user.mention} {MESSAGE}\n\n{gemini_sermon}\n\n{gif_to_send}"
+        await interaction.followup.send(full_message.strip())
+
     except Exception as e:
         if not interaction.response.is_done():
             await interaction.response.send_message(f"コマンド実行中にエラーが発生しました: {e}", ephemeral=True)
