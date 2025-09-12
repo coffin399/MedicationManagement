@@ -11,7 +11,13 @@ token: "YOUR_DISCORD_BOT_TOKEN"
 channel_id: 123456789012345678
 
 # メンションするユーザーのID
-user_id: 123456789012345678
+target_users:
+  - id: 111111111111
+    name: "ごみぃ"
+  - id: 222222222222
+    name: "ごみぃ"
+  - id: 333333333333
+    name: "ごみぃ"
 
 # 送信するメッセージの基本部分
 message: "お薬を飲む時間ですよ！"
