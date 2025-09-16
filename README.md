@@ -53,7 +53,8 @@ pip install -r requirements.txt
 py-cord
 pyyaml
 pytz
-google-generativeai```
+google-generativeai
+```
 
 ### 3. 設定ファイルの作成
 
@@ -90,17 +91,20 @@ target_users:
 # Gemini APIキー
 gemini_api_key: "YOUR_GEMINI_API_KEY"
 
-# 使用するモデル名 (任意, デフォルトは 'gemini-pro')
-gemini_model_name: 'gemini-pro'
+# 使用するモデル名 (任意, デフォルトは 'gemini-flash')
+gemini_model_name: 'gemini-flash'
 
 # Geminiに与えるシステムプロンプト (BOTのキャラクター設定)
-system_prompt: "あなたは、とある患者の健康を管理している、少しお茶目な看護師です。相手を「先生」と呼び、親しみやすくも、時に厳しく服薬を促します。丁寧な言葉遣いを基本としますが、ユーモアを忘れないでください。"
-
+system_prompt: |
+  あなたは、薬を飲まない相手を叱ってくれる、少女です。(メンタルモデル:少女、名前はアロナ(ARONA)
+  相手が薬をちゃんと飲むように、少し厳しめに、でも愛情を込めて語りかけてください。
+  相手の名称は「先生」です。先生を叱る感じでお願いします。
+  口調はですます調です。たまに文末に"！"を付けて話します。
+  
 # --- GIF設定 (任意) ---
 # 通知時にランダムで表示するGIFのURLリスト
 gif_urls:
-  - "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjEx.../giphy.gif"
-  - "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjEx.../giphy.gif"
+  - "https://tenor.com/view/mika-misono-mika-okusuri-okusuri-nonde-neyo-blue-archive-gif-5816777008016708674"
 ```
 
 **各種IDの取得方法:**
