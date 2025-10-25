@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>機能詳細 - アロナちゃん</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .feature-detail {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .feature-detail h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-detail h3 i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+
+        .feature-detail p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-example pre {
+            margin: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .section {
+            margin: 50px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .workflow-step .step-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .workflow-step .step-content {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><span class="emoji">💊</span> アロナちゃん - 機能詳細</h1>
+        </header>
+
+        <nav class="nav">
+            <a href="index.html"><i class="fas fa-home"></i> ホーム</a>
+            <a href="features.html" class="active"><i class="fas fa-star"></i> 機能詳細</a>
+            <a href="setup.html"><i class="fas fa-cog"></i> セットアップ</a>
+            <a href="commands.html"><i class="fas fa-terminal"></i> コマンド</a>
+        </nav>
+
+        <main class="main-content">
+            <section class="section">
+                <h2><span class="emoji">⏰</span> 定時リマインド機能</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-clock"></i> 自動通知システム</h3>
+                    <p>
+                        アロナちゃんは設定された時間に自動的に服薬リマインダーを送信します。
+                        複数の時間を設定可能で、各時間に未服薬のユーザーに対して個別にメンション通知を行います。
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <strong>💡 設定例:</strong> 朝8時、昼12時、夕方6時、夜9時に通知を送信するように設定できます。
+                    </div>
+
+                    <h4>通知の流れ:</h4>
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>時間チェック:</strong> 設定された時間になったかチェック
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>未服薬者確認:</strong> 今日まだ服薬していないユーザーを特定
+                        </div>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>通知送信:</strong> 未服薬者にメンション付きで通知を送信
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">🤖</span> Gemini AI連携</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-robot"></i> インテリジェントメッセージ生成</h3>
+                    <p>
+                        Google Gemini APIと連携して、毎日異なる励ましのメッセージを自動生成します。
+                        アロナちゃんのキャラクターに合わせた、愛情深くも少し厳しめなメッセージで服薬を促します。
+                    </p>
+
+                    <div class="code-example">
+                        <pre>システムプロンプト例:
+あなたは、薬を飲まない相手を叱ってくれる、少女です。
+相手が薬をちゃんと飲むように、少し厳しめに、でも愛情を込めて語りかけてください。
+相手の名称は「先生」です。先生を叱る感じでお願いします。
+口調はですます調です。たまに文末に"！"を付けて話します。</pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <strong>🎭 キャラクター設定:</strong> アロナちゃんは「先生」と呼んで、愛情深くも厳しめに服薬を促す少女キャラクターです。
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">📅</span> 服薬カレンダー</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-calendar-alt"></i> 視覚的服薬管理</h3>
+                    <p>
+                        各ユーザーの服薬状況をカレンダー形式で視覚的に管理できます。
+                        絵文字を使って服薬状況を分かりやすく表示し、過去の記録も一目で確認できます。
+                    </p>
+
+                    <h4>カレンダーの表示記号:</h4>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
+                        <li><strong>✅</strong> 服薬済みの日</li>
+                        <li><strong>🗓️</strong> 今日の日付</li>
+                        <li><strong>⚠️</strong> 服薬忘れの日（過去）</li>
+                        <li><strong>空白</strong> 未来の日付</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <pre>カレンダー表示例:
+日 月 火 水 木 金 土
+✅01 ✅02 ⚠️03 ✅04 ✅05 ✅06 ✅07
+✅08 ✅09 ✅10 ✅11 ✅12 ✅13 ✅14
+✅15 ✅16 ✅17 ✅18 ✅19 ✅20 ✅21
+✅22 ✅23 ✅24 ✅25 ✅26 ✅27 ✅28
+✅29 ✅30 🗓️31</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">👥</span> マルチユーザー管理</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-users"></i> 複数ユーザー対応</h3>
+                    <p>
+                        複数のユーザーの服薬状況を個別に管理できます。
+                        各ユーザーは独立した服薬記録を持ち、個別にカレンダーを確認できます。
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>🔧 設定方法:</strong> config.yamlファイルでtarget_usersに複数のユーザーを追加できます。
+                    </div>
+
+                    <div class="code-example">
+                        <pre>target_users:
+  - id: 111111111111111111
+    name: "ユーザーA"
+  - id: 222222222222222222
+    name: "ユーザーB"
+  - id: 333333333333333333
+    name: "ユーザーC"</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">🎨</span> GIF投稿機能</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-images"></i> 楽しいコミュニケーション</h3>
+                    <p>
+                        通知メッセージにランダムなGIFを添付して、コミュニケーションを豊かにします。
+                        設定したGIF URLリストからランダムに選択して表示します。
+                    </p>
+
+                    <div class="code-example">
+                        <pre>gif_urls:
+  - "https://example.com/gif1.gif"
+  - "https://example.com/gif2.gif"
+  - "https://example.com/gif3.gif"</pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <strong>🎭 効果:</strong> 厳しめのメッセージでも、可愛いGIFで和らげてくれます。
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">💾</span> データ管理</h2>
+                <div class="feature-detail">
+                    <h3><i class="fas fa-database"></i> 自動データ保存</h3>
+                    <p>
+                        服薬記録は自動的にJSONファイルに保存されます。
+                        手動で編集する必要はなく、BOTが自動的に管理します。
+                    </p>
+
+                    <div class="code-example">
+                        <pre>medication_log.json の構造:
+{
+  "111111111111111111": {
+    "2024-01-01": true,
+    "2024-01-02": true,
+    "2024-01-03": false
+  },
+  "222222222222222222": {
+    "2024-01-01": true,
+    "2024-01-02": false
+  }
+}</pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <strong>🔄 自動バックアップ:</strong> データは自動的に保存され、BOT再起動後も記録が保持されます。
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

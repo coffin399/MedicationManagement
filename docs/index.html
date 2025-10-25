@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アロナちゃん - Discord服薬リマインダーBOT</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin: 50px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .command-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .command-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .command-item h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .command-item p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .command-item .params {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        .setup-steps {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .setup-steps ol {
+            padding-left: 20px;
+        }
+
+        .setup-steps li {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .command-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><span class="emoji">💊</span> アロナちゃん</h1>
+            <p class="subtitle">Discord服薬リマインダーBOT</p>
+            <p class="description">
+                アロナちゃんが服薬管理のために指定した時間に指定したチャンネルと複数のユーザーにメンションをかけ説教するBOTです。
+                Google Gemini APIと連携し、毎日異なる励ましのメッセージを生成するほか、服薬状況をカレンダーで視覚的に管理できます。
+            </p>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2><span class="emoji">✨</span> 主な機能</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>定時リマインド機能</h3>
+                        <p>設定した時間に、まだ服薬していないユーザー全員にメンション通知を送信します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Gemini連携</h3>
+                        <p>Google Gemini APIを利用して、毎日ユニークで心温まるメッセージを自動生成します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-images"></i>
+                        <h3>GIF投稿機能</h3>
+                        <p>通知メッセージにランダムなGIFを添付し、コミュニケーションを豊かにします。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>服薬カレンダー</h3>
+                        <p>ユーザーごとに服薬状況を記録・管理し、絵文字で分かりやすく表示します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h3>マルチユーザー対応</h3>
+                        <p>複数のユーザーの服薬状況を個別に管理できます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-terminal"></i>
+                        <h3>スラッシュコマンド</h3>
+                        <p>直感的なスラッシュコマンドで、BOTの全機能を操作できます。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">📖</span> コマンド一覧</h2>
+                <div class="command-list">
+                    <div class="command-item">
+                        <h4>/med &lt;user&gt;</h4>
+                        <p>指定したユーザーが薬を飲んだことを記録します。</p>
+                        <div class="params">
+                            <strong>user:</strong> 服薬を記録する対象のユーザーを @メンション で指定します。
+                        </div>
+                    </div>
+                    <div class="command-item">
+                        <h4>/check &lt;user&gt;</h4>
+                        <p>指定したユーザーの現在の服薬カレンダーを表示します。</p>
+                        <div class="params">
+                            <strong>user:</strong> 状況を確認したいユーザーを @メンション で指定します。
+                        </div>
+                    </div>
+                    <div class="command-item">
+                        <h4>/uncheck &lt;user&gt;</h4>
+                        <p>指定したユーザーの<strong>今日</strong>の服薬記録を取り消します。</p>
+                        <div class="params">
+                            <strong>user:</strong> 記録を取り消したいユーザーを @メンション で指定します。
+                        </div>
+                    </div>
+                    <div class="command-item">
+                        <h4>/notice</h4>
+                        <p>未服薬のユーザー全員に、公開の通知を送信します。</p>
+                        <div class="params">
+                            定期通知と同じ内容（メンション、Geminiメッセージ、GIF、カレンダー）が即座に送信されます。
+                        </div>
+                    </div>
+                    <div class="command-item">
+                        <h4>/test_notice</h4>
+                        <p>コマンド実行者本人にのみ、テスト通知を送信します。</p>
+                        <div class="params">
+                            <strong>他の人には見えません。</strong> 通知がどのように表示されるかを確認するのに便利です。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">🚀</span> セットアップ方法</h2>
+                <div class="setup-steps">
+                    <ol>
+                        <li><strong>リポジトリのクローン</strong>
+                            <div class="code-block">
+                                <pre>git clone &lt;リポジトリのURL&gt;
+cd &lt;リポジトリのディレクトリ&gt;</pre>
+                            </div>
+                        </li>
+                        <li><strong>必要なライブラリのインストール</strong>
+                            <div class="code-block">
+                                <pre>pip install -r requirements.txt</pre>
+                            </div>
+                        </li>
+                        <li><strong>設定ファイルの作成</strong>
+                            <p><code>config-default.yaml</code>をコピーして<code>config.yaml</code>として編集してください。</p>
+                            <div class="highlight">
+                                <strong>💡 簡単起動:</strong> 面倒な人は<code>start.bat</code>をダブルクリックしてください。
+                            </div>
+                        </li>
+                        <li><strong>BOTの起動</strong>
+                            <div class="code-block">
+                                <pre>python main.py</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">🔧</span> 動作要件</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Python 3.8+</h3>
+                        <p>Python 3.8以降が必要です。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-discord"></i>
+                        <h3>Discord Bot Token</h3>
+                        <p>Discord Developer PortalでBOTトークンを取得してください。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-key"></i>
+                        <h3>Google Gemini API Key</h3>
+                        <p>Google AI StudioでAPIキーを取得してください（任意）。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><span class="emoji">📁</span> 自動生成されるファイル</h2>
+                <div class="highlight">
+                    <strong>medication_log.json:</strong> ユーザーごとの服薬記録が保存されるJSONファイルです。BOTが自動で生成・管理するため、手動で編集する必要はありません。
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>このプロジェクトは <a href="LICENSE">MITライセンス</a> の下で公開されています。</p>
+            <div style="margin-top: 20px;">
+                <a href="https://github.com"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-download"></i> ダウンロード</a>
+                <a href="#"><i class="fas fa-question-circle"></i> ヘルプ</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

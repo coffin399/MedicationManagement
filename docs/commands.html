@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コマンド一覧 - アロナちゃん</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .command-section {
+            margin: 40px 0;
+        }
+
+        .command-section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .command-section h2 i {
+            margin-right: 15px;
+            font-size: 2.5rem;
+        }
+
+        .command-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .command-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .command-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .command-name {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .command-description {
+            color: #666;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .command-usage {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .command-usage pre {
+            margin: 0;
+        }
+
+        .parameter {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .parameter h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .parameter h4 i {
+            margin-right: 10px;
+        }
+
+        .parameter-type {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .example {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .example h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .response-example {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .response-example h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .warning-box {
+            background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .info-box {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .command-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><span class="emoji">💻</span> コマンド一覧</h1>
+        </header>
+
+        <nav class="nav">
+            <a href="index.html"><i class="fas fa-home"></i> ホーム</a>
+            <a href="features.html"><i class="fas fa-star"></i> 機能詳細</a>
+            <a href="setup.html"><i class="fas fa-cog"></i> セットアップ</a>
+            <a href="commands.html" class="active"><i class="fas fa-terminal"></i> コマンド</a>
+        </nav>
+
+        <main class="main-content">
+            <section class="command-section">
+                <h2><i class="fas fa-pills"></i> 服薬管理コマンド</h2>
+                
+                <div class="command-grid">
+                    <div class="command-card">
+                        <div class="command-header">
+                            <div class="command-name">/med</div>
+                            <div class="command-description">服薬記録を追加</div>
+                        </div>
+                        
+                        <p>指定したユーザーが薬を飲んだことを記録します。記録後、更新されたカレンダーが表示されます。</p>
+                        
+                        <div class="parameter">
+                            <h4><i class="fas fa-user"></i> user <span class="parameter-type">必須</span></h4>
+                            <p>服薬を記録する対象のユーザーを @メンション で指定します。</p>
+                        </div>
+
+                        <div class="command-usage">
+                            <pre>/med @ユーザー名</pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>💡 使用例</h4>
+                            <p>ユーザー「田中さん」の服薬記録を追加する場合：</p>
+                            <div class="command-usage">
+                                <pre>/med @田中さん</pre>
+                            </div>
+                        </div>
+
+                        <div class="response-example">
+                            <h4>📋 レスポンス例</h4>
+                            <p>「田中さん、よくできました！」というメッセージと共に、更新されたカレンダーが表示されます。</p>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="command-header">
+                            <div class="command-name">/check</div>
+                            <div class="command-description">服薬状況を確認</div>
+                        </div>
+                        
+                        <p>指定したユーザーの現在の服薬カレンダーを表示します。その日の服薬状況に応じたメッセージも表示されます。</p>
+                        
+                        <div class="parameter">
+                            <h4><i class="fas fa-user"></i> user <span class="parameter-type">必須</span></h4>
+                            <p>状況を確認したいユーザーを @メンション で指定します。</p>
+                        </div>
+
+                        <div class="command-usage">
+                            <pre>/check @ユーザー名</pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>💡 使用例</h4>
+                            <p>ユーザー「佐藤さん」の服薬状況を確認する場合：</p>
+                            <div class="command-usage">
+                                <pre>/check @佐藤さん</pre>
+                            </div>
+                        </div>
+
+                        <div class="response-example">
+                            <h4>📋 レスポンス例</h4>
+                            <p>服薬済みの場合：「佐藤さんは今日のお薬はもう飲みましたね！えらい！」<br>
+                            未服薬の場合：「佐藤さんは今日のお薬はまだのようです。忘れないでくださいね。」</p>
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="command-header">
+                            <div class="command-name">/uncheck</div>
+                            <div class="command-description">服薬記録を取り消し</div>
+                        </div>
+                        
+                        <p>指定したユーザーの<strong>今日</strong>の服薬記録を取り消します。間違えて記録してしまった場合に使用します。</p>
+                        
+                        <div class="parameter">
+                            <h4><i class="fas fa-user"></i> user <span class="parameter-type">必須</span></h4>
+                            <p>記録を取り消したいユーザーを @メンション で指定します。</p>
+                        </div>
+
+                        <div class="command-usage">
+                            <pre>/uncheck @ユーザー名</pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>💡 使用例</h4>
+                            <p>ユーザー「山田さん」の今日の服薬記録を取り消す場合：</p>
+                            <div class="command-usage">
+                                <pre>/uncheck @山田さん</pre>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>⚠️ 注意:</strong> このコマンドは今日の記録のみを取り消します。過去の記録は変更されません。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="command-section">
+                <h2><i class="fas fa-bell"></i> 通知コマンド</h2>
+                
+                <div class="command-grid">
+                    <div class="command-card">
+                        <div class="command-header">
+                            <div class="command-name">/notice</div>
+                            <div class="command-description">手動通知送信</div>
+                        </div>
+                        
+                        <p>未服薬のユーザー全員に、公開の通知を送信します。定期通知と同じ内容（メンション、Geminiメッセージ、GIF、カレンダー）が即座に送信されます。</p>
+
+                        <div class="command-usage">
+                            <pre>/notice</pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>💡 使用例</h4>
+                            <p>今すぐ未服薬者に通知を送信したい場合：</p>
+                            <div class="command-usage">
+                                <pre>/notice</pre>
+                            </div>
+                        </div>
+
+                        <div class="response-example">
+                            <h4>📋 レスポンス例</h4>
+                            <p>通知を送信した場合：「未服薬のユーザーに通知を送信しました。」<br>
+                            全員服薬済みの場合：「全員が服薬済みのため、通知は送信しませんでした。」</p>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>ℹ️ 情報:</strong> コマンドの実行結果は、実行者本人にのみ表示されます。他のユーザーには見えません。
+                        </div>
+                    </div>
+
+                    <div class="command-card">
+                        <div class="command-header">
+                            <div class="command-name">/test_notice</div>
+                            <div class="command-description">テスト通知送信</div>
+                        </div>
+                        
+                        <p>コマンド実行者本人にのみ、テスト通知を送信します。通知がどのように表示されるかを確認するのに便利です。</p>
+
+                        <div class="command-usage">
+                            <pre>/test_notice</pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>💡 使用例</h4>
+                            <p>通知の表示を確認したい場合：</p>
+                            <div class="command-usage">
+                                <pre>/test_notice</pre>
+                            </div>
+                        </div>
+
+                        <div class="response-example">
+                            <h4>📋 レスポンス例</h4>
+                            <p>「【テスト通知】」というタイトルで、通常の通知と同じ内容が送信されます。カレンダーも表示されます。</p>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>🔒 プライベート:</strong> このコマンドの結果は<strong>他の人には見えません</strong>。あなただけに送信されます。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="command-section">
+                <h2><i class="fas fa-info-circle"></i> コマンドの詳細情報</h2>
+                
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> コマンドの使い方</h4>
+                    <ul style="margin: 15px 0; padding-left: 30px;">
+                        <li>すべてのコマンドは<strong>スラッシュ（/）</strong>で始まります</li>
+                        <li>コマンド入力時に<strong>Tabキー</strong>でオートコンプリートが利用できます</li>
+                        <li>ユーザー指定時は<strong>@メンション</strong>を使用してください</li>
+                        <li>コマンドの実行には<strong>適切な権限</strong>が必要です</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-calendar-alt"></i> カレンダーの見方</h4>
+                    <ul style="margin: 15px 0; padding-left: 30px;">
+                        <li><strong>✅</strong> 服薬済みの日</li>
+                        <li><strong>🗓️</strong> 今日の日付</li>
+                        <li><strong>⚠️</strong> 服薬忘れの日（過去）</li>
+                        <li><strong>空白</strong> 未来の日付</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 注意事項</h4>
+                    <ul style="margin: 15px 0; padding-left: 30px;">
+                        <li>コマンドは<strong>サーバー管理者</strong>または<strong>適切な権限を持つユーザー</strong>のみが実行できます</li>
+                        <li>服薬記録は<strong>日付単位</strong>で管理されます</li>
+                        <li>過去の記録は<strong>手動で変更できません</strong></li>
+                        <li>BOTが<strong>オフライン</strong>の場合はコマンドが実行できません</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

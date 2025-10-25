@@ -1,0 +1,582 @@
+/* アロナちゃん - Discord服薬リマインダーBOT ドキュメントサイト用CSS */
+
+/* 基本スタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダー */
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header .subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.header .description {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ナビゲーション */
+.nav {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav a:hover, .nav a.active {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* メインコンテンツ */
+.main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+/* セクション */
+.section {
+    margin: 50px 0;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+/* フィーチャーグリッド */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #667eea;
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* コマンドリスト */
+.command-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.command-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    border-left: 5px solid #667eea;
+}
+
+.command-item h4 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.command-item p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.command-item .params {
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* セットアップステップ */
+.setup-steps {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.setup-steps ol {
+    padding-left: 20px;
+}
+
+.setup-steps li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+/* コードブロック */
+.code-block {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+}
+
+.code-block pre {
+    margin: 0;
+}
+
+/* ハイライトボックス */
+.highlight {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #667eea;
+}
+
+.highlight-box {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #667eea;
+}
+
+.warning-box {
+    background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #ff6b6b;
+}
+
+.success-box {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #51cf66;
+}
+
+.info-box {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #667eea;
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    color: white;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+    opacity: 0.8;
+}
+
+/* ステップ */
+.step {
+    margin: 40px 0;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+}
+
+.step h3 {
+    color: #667eea;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.step h3 i {
+    margin-right: 15px;
+    font-size: 2rem;
+}
+
+.step-number {
+    background: #667eea;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* コマンドカード */
+.command-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    border-left: 5px solid #667eea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.command-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.command-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.command-name {
+    background: #667eea;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.command-description {
+    color: #666;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.command-usage {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.command-usage pre {
+    margin: 0;
+}
+
+.parameter {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.parameter h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.parameter h4 i {
+    margin-right: 10px;
+}
+
+.parameter-type {
+    background: #667eea;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.example {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #667eea;
+}
+
+.example h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.response-example {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.response-example h4 {
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+/* ワークフローステップ */
+.workflow-step {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.workflow-step .step-number {
+    background: #667eea;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.workflow-step .step-content {
+    flex: 1;
+}
+
+/* グリッドレイアウト */
+.command-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.requirement-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.requirement-card:hover {
+    transform: translateY(-5px);
+}
+
+.requirement-card i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.requirement-card h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.requirement-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 設定例 */
+.config-example {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.config-example h4 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.yaml-key {
+    color: #e83e8c;
+    font-weight: bold;
+}
+
+.yaml-string {
+    color: #28a745;
+}
+
+.yaml-comment {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .nav a {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .command-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .command-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .requirements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a6fd8;
+}
